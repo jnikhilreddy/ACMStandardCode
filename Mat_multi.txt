@@ -1,0 +1,17 @@
+void Mat_multi(__int64 mat1[][2],__int64 mat2[][2],__int64 res[][2])
+{
+	__int64 i,j,k,sum;
+	for(i=0;i<2;i++)
+	{
+		for(j=0;j<2;j++)
+		{
+			sum=0;
+			for(k=0;k<2;k++)
+			{
+				sum+=(mat1[i][k]*mat2[k][j])%Power[19];
+			}
+			res[i][j]=sum;
+		}
+	}
+	return ;
+}

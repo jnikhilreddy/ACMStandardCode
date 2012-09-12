@@ -1,0 +1,16 @@
+int sort ( const void *a, const void *b ) ;
+
+int sort ( const void *a, const void *b )
+{
+	char *x, *y, c, d ;
+
+	x = ( char * ) a ;
+	y = ( char * ) b ;
+
+	c = tolower (*x) ;
+	d = tolower (*y) ;
+
+	if ( c == d ) return ( *x - *y ) ;
+
+	return ( c - d ) ;
+}

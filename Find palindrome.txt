@@ -1,0 +1,16 @@
+ int palin[SZ][SZ];
+monish_sust: int check(int i , int j){
+if(i >= j) return 1;
+if(str[i] != str[j]) return 0;
+if(palin[i][j] != -1) return palin[i][j];
+
+int ret;
+ret = check(i+1 , j-1);
+return palin[i][j] = ret;
+}
+monish_sust: memset(palin , -1 , sizeof(palin));
+for(i = 0;i<ln;i++)
+for(j = 0;j<ln;j++){
+if(palin[i][j] == -1)
+palin[i][j] = check(i , j);
+}
