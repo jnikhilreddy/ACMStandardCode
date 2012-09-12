@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<math.h>
+
+#define INF 10000
+#define NIL 0 
+
+#define CSE 109
+
+long PATH[CSE][CSE],Start,End,pik;
+double d[CSE][CSE];
+
+void init(long n)
+{
+	long i,j;
+
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n;j++)
+		{
+			d[i][j]=0;
+			if(i==j)
+			{
+				d[i][j]=1;
+			}
+		}
+	}
+
+	return ;
+}
+
+void FW(long n)
+{
+	long i,j,k;
+	
+	for(k=1;k<=n;k++)
+	{
+		for(i=1;i<=n;i++)
+		{
+			for(j=1;j<=n;j++)
+			{
+				if(d[i][j]<(d[i][k]*d[k][j]))
+				{
+					d[i][j]=d[i][k]*d[k][j];
+				}
+			}
+		}
+	}
+
+	return ;
+}
+
+int main()
+{
+	long i,j,Node,Edge;
+	long t1,t2,w;
+	double a,b,rt;
+
+	while(scanf("%ld",&Node)==1 && Node)
+	{
+		scanf("%ld",&Edge);
+
+		init(Node);
+
+		for(i=1;i<=Edge;i++)
+		{
+			scanf("%ld%ld%ld",&t1,&t2,&w);
+			a=(double)w;
+			d[t2][t1]=d[t1][t2]=a/100.0;
+		}
+		FW(Node);
+		rt=d[1][Node]*100;
+		printf("%.6lf percent\n",rt);
+		
+	}
+	
+	return 0;
+}
